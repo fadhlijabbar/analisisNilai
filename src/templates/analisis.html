@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Analisis Nilai</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="w-container m-auto flex">
+            <div class="bg-primary w-16 inline-block">
+                <div class="mt-10">
+                    <div class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
+                        <img src="../assets/img/user.png" alt="" class="m-auto">
+                    </div>
+                    
+                    <a href="">
+                        <div class="w-full flex h-60px mb-3 cursor-pointer bg-primary-600 hover:bg-primary-600">
+                            <img src="../assets/img/right arrow.svg" alt="" class="m-auto">
+                        </div>
+                    </a>
+                    
+                    <a href="/riwayat">
+                        <div class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
+                            <img src="../assets/img/clock.svg" alt="" class="m-auto">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-r w-sideleft inline-block py-10 px-60px">
+                <div>
+                    <div class="mb-10">
+                        <h1 class="font-plusjakarta font-semibold text-2xl mb-1 text-netral-500">Analisis Nilai</h1>
+                        <p class="font-plusjakarta font-regular text-base text-netral-400">Isi form di bawah ini sesuai dengan data yang akan dianalisis.</p>
+                    </div>
+
+                    <form action="/uploadfile" method="post" enctype="multipart/form-data">
+                        <div class="mb-10">
+                            <div class="mb-5">
+                                <div class="font-plusjakarta mb-1 text-netral-500 font-semibold text-base">Nama Hasil Analisis</div>
+                                <p class="font-plusjakarta mb-3 font-regular text-base text-netral-400">Masukkan nama hasil analisis (contoh: Hasil Analisis Nilai Angkatan 2017/2018).</p>
+                                <input type="text" name="analysis_name" placeholder="Masukkan nama hasil analisis" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            </div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta mb-1 text-netral-500 font-semibold text-base">File Data Nilai</div>
+                                <p class="font-plusjakarta mb-3 font-regular text-base text-netral-400">Masukkan file data nilai di sini (format: .xlsx)</p>
+                                <input type="file" name="file" accept=".xlsx" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100" multiple>
+                            </div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta mb-1 text-netral-500 font-semibold text-base">Ambang Batas Nilai</div>
+                                <p class="font-plusjakarta mb-3 font-regular text-base text-netral-400">Masukkan nilai minimal yang merupakan kriteria tertentu (contoh: 75)</p>
+                                <input type="number" name="min_score" id="numericInput1" placeholder="Masukkan ambang batas nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            </div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta mb-1 text-netral-500 font-semibold text-base">Minimal Support (%)</div>
+                                <p class="font-plusjakarta mb-3 font-regular text-base text-netral-400">Masukkan minimal support (contoh: 20)</p>
+                                <input type="number" name="min_support" id="numericInput2" placeholder="Masukkan minimal support (%)" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            </div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta mb-1 text-netral-500 font-semibold text-base">Minimal Confidence (%)</div>
+                                <p class="font-plusjakarta mb-3 font-regular text-base text-netral-400">Masukkan minimal confidence (contoh: 80)</p>
+                                <input type="number" name="min_confidence" id="numericInput3" placeholder="Masukkan minimal confidence (%)" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            </div>
+                        </div>
+                    
+                    <div class="mb-10">
+                        <input type="submit" value="Analisis Nilai" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none">
+                    </div>
+                    
+                </form>
+                </div>
+            </div>
+
+            <div class="inline-block text-center w-sideright m-auto">
+                <div>
+                    <img src="../assets/img/img-1.png" alt="" class="m-auto mb-10">
+                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                        Optimalkan Prestasi Siswa dengan Association Rules!
+                    </div>
+                    <div class="font-plusjakarta text-netral-400 text-base">
+                        Temukan pola keberhasilan dan tingkatkan kinerja akademis Anda sekarang!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
+
+<script>
+    var inputIds = ['numericInput1', 'numericInput2'];
+
+    inputIds.forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function(e) {
+            var input = e.target.value;
+            var sanitizedInput = input.replace(/[^0-9]/g, '');
+
+            if (input !== sanitizedInput) {
+                e.target.value = sanitizedInput;
+            }
+        });
+    });
+</script>

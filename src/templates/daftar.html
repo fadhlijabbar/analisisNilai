@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Analisis Nilai</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="w-full py-20">
+            <div class="w-350px m-auto relative">
+                <div class="mb-10">
+                    <h1 class="font-plusjakarta font-semibold text-2xl mb-1 text-netral-500">Daftar Akun Baru</h1>
+                    <p class="font-plusjakarta font-regular text-base text-netral-400">Masukkan data Anda di bawah ini untuk membuat akun baru.</p>
+                </div>
+                
+                <form action="/login" method="post">
+                    <div class="mb-10">
+                        <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Username</div>
+                            <input type="text" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                        </div>
+                        <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kata Sandi</div>
+                            <div class="">
+                                <input id="passwordInput" type="password" placeholder="Masukkan kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100 mb-1">
+                                <div id="passwordErr" class="font-plusjakarta text-sm text-danger hidden"></div>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Masukkan Ulang Kata Sandi</div>
+                            <div class="">
+                                <input id="passwordInputMatch" type="password" placeholder="Masukkan ulang kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100 mb-1">
+                                <div id="passwordErrMatch" class="font-plusjakarta text-sm text-danger hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-10">
+                        <input type="submit" value="Daftar" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none" disabled>
+                    </div>
+                </form>
+                <div class="font-plusjakarta text-netral-400 text-base text-center">
+                    Sudah mempunyai akun? <a href="/" class="font-semibold text-primary">Masuk di sini</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            const inputs = form.querySelectorAll("input[type='text'], input[type='password']");
+            const submitButton = form.querySelector("input[type='submit']");
+
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordInputMatch = document.getElementById('passwordInputMatch');
+
+            function checkForm() {
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (input.value.trim() === "") {
+                        allFilled = false;
+                    }
+                });
+
+                const password = passwordInput.value;
+                const passwordMatch = passwordInputMatch.value;
+
+                if (allFilled && password.length >= 8 && password === passwordMatch) {
+                    submitButton.classList.remove("bg-disable");
+                    submitButton.classList.add("hover:bg-primary-600", "bg-primary");
+                    submitButton.removeAttribute("disabled");
+                } else {
+                    submitButton.classList.add("bg-disable");
+                    submitButton.classList.remove("hover:bg-primary-600", "bg-primary");
+                    submitButton.setAttribute("disabled", "true");
+                }
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener("input", checkForm);
+            });
+
+            passwordInput.addEventListener('input', function() {
+                const errorDiv = document.getElementById('passwordErr');
+                const password = passwordInput.value;
+
+                if (password.length < 8) {
+                    errorDiv.classList.remove('hidden');
+                    errorDiv.textContent = "*minimal 8 karakter";
+                    passwordInput.classList.remove('outline-primary', 'focus:bg-primary-100');
+                    passwordInput.classList.add('outline-danger', 'focus:bg-danger-100');
+                } else {
+                    errorDiv.classList.add('hidden');
+                    passwordInput.classList.remove('outline-danger', 'focus:bg-danger-100');
+                    passwordInput.classList.add('outline-primary', 'focus:bg-primary-100');
+                }
+
+                checkForm();
+            });
+
+            passwordInputMatch.addEventListener('input', function() {
+                const errorDiv = document.getElementById('passwordErrMatch');
+                const password = passwordInput.value;
+                const passwordMatch = passwordInputMatch.value;
+
+                if (password !== passwordMatch) {
+                    errorDiv.classList.remove('hidden');
+                    errorDiv.textContent = "*kata sandi tidak cocok";
+                    passwordInputMatch.classList.remove('outline-primary', 'focus:bg-primary-100');
+                    passwordInputMatch.classList.add('outline-danger', 'focus:bg-danger-100');
+                } else {
+                    errorDiv.classList.add('hidden');
+                    passwordInputMatch.classList.remove('outline-danger', 'focus:bg-danger-100');
+                    passwordInputMatch.classList.add('outline-primary', 'focus:bg-primary-100');
+                }
+
+                checkForm();
+            });
+
+            checkForm();
+        });
+
+    </script>
+</html>
