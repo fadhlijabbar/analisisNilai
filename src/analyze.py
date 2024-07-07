@@ -2,9 +2,8 @@ import uuid
 from datetime import datetime
 import pandas as pd
 import mysql.connector
-from fastapi import FastAPI, File, UploadFile, Form, Request
+from fastapi import UploadFile
 from mlxtend.frequent_patterns import fpgrowth, association_rules
-
 
 db = mysql.connector.connect(
     host="localhost",

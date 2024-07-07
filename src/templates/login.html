@@ -16,24 +16,63 @@
                     <h1 class="font-plusjakarta font-semibold text-2xl mb-1 text-netral-500">Masuk ke Akun Anda</h1>
                     <p class="font-plusjakarta font-regular text-base text-netral-400">Masukkan data Anda di bawah ini untuk masuk ke akun Anda.</p>
                 </div>
-    
-                <div class="mb-10">
-                    <div class="mb-5">
-                        <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Username</div>
-                        <input type="text" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                    </div>
-                    <div class="mb-5">
-                        <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kata Sandi</div>
-                        <input type="password" placeholder="Masukkan kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                    </div>
+                
+                {% if error_message == "1" %}
+                <div class="bg-danger-100 border border-danger-300 text-danger px-4 py-3 rounded relative mb-5">
+                    <span class="block sm:inline">Username atau kata sandi yang dimasukkan salah!</span>
                 </div>
-                <div class="mb-10">
-                    <input type="submit" value="Masuk" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none">
-                </div>
+                {% endif %}
+                <form action="/proseslogin" method="post">
+                    <div class="mb-10">
+                        <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Username</div>
+                            <input type="text" name="username" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                        </div>
+                        <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kata Sandi</div>
+                            <input type="password" name="password" placeholder="Masukkan kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                        </div>
+                    </div>
+                    <div class="mb-10">
+                        <input type="submit" value="Masuk" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none">
+                    </div>
+                </form>
                 <div class="font-plusjakarta text-netral-400 text-base text-center">
                     Belum mempunyai akun? <a href="/daftar" class="font-semibold text-primary">Daftar di sini</a>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            const inputs = form.querySelectorAll("input[type='text'], input[type='password']");
+            const submitButton = form.querySelector("input[type='submit']");
+
+            function checkForm() {
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (input.value.trim() === "") {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) {
+                    submitButton.classList.remove("bg-disable");
+                    submitButton.classList.add("hover:bg-primary-600", "bg-primary");
+                    submitButton.removeAttribute("disabled");
+                } else {
+                    submitButton.classList.add("bg-disable");
+                    submitButton.classList.remove("hover:bg-primary-600", "bg-primary");
+                    submitButton.setAttribute("disabled", "true");
+                }
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener("input", checkForm);
+            });
+
+            checkForm(); // Initial check in case the form is already filled
+        });
+    </script>
 </html>

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, Form, Request
+from fastapi import FastAPI, File, UploadFile, Form, Request, HTTPException
 import uvicorn
 import os
 from fastapi.templating import Jinja2Templates
@@ -8,6 +8,8 @@ from ambildata import showDataRules
 from ambildata import showDataAnalysisAll
 from starlette.responses import Response
 from analyze import analisisNilai
+from daftar import daftarAkun
+from login import loginAkun
 
 app = FastAPI()
 
@@ -15,8 +17,8 @@ app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 app.mount("/files", StaticFiles(directory="files"), name="files")
 templates = Jinja2Templates(directory="templates")
 
-@app.post("/uploadfile")
-async def create_upload_file(
+@app.post("/prosesanalisis")
+async def prosesanalisis(
     analysis_name: str = Form(...),
     min_score: float = Form(...),
     min_support: float = Form(...),
@@ -32,13 +34,53 @@ async def create_upload_file(
     
     return response
 
+@app.post("/prosesdaftar")
+async def prosesdaftar(
+    username: str = Form(...),
+    password: str = Form(...),
+): 
+    
+    result = daftarAkun(username, password)
+
+    if result == "Username sudah terdaftar":
+        redirect_url = "/daftar?error_message=1"
+        response = Response(status_code=302)
+        response.headers["Location"] = redirect_url
+        return response
+
+    redirect_url = "/"
+    
+    response = Response(status_code=302)
+    response.headers["Location"] = redirect_url
+
+    return response
+
+@app.post("/proseslogin")
+async def proseslogin(
+    request: Request,
+    username: str = Form(...),
+    password: str = Form(...),
+):
+    if loginAkun(username, password):
+        redirect_url = "/analisis"
+        response = Response(status_code=302)
+        response.headers["Location"] = redirect_url
+        return response
+    else:
+        redirect_url = "/?error_message=1"
+        response = Response(status_code=302)
+        response.headers["Location"] = redirect_url
+        return response
+
 @app.get("/")
 def home(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    error_message = request.query_params.get("error_message")
+    return templates.TemplateResponse("login.html", {"request": request, "error_message": error_message})
 
 @app.get("/daftar")
 def home(request: Request):
-    return templates.TemplateResponse("daftar.html", {"request": request})
+    error_message = request.query_params.get("error_message")
+    return templates.TemplateResponse("daftar.html", {"request": request, "error_message": error_message})
 
 @app.get("/analisis")
 def home(request: Request):

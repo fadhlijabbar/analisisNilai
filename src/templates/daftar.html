@@ -17,16 +17,21 @@
                     <p class="font-plusjakarta font-regular text-base text-netral-400">Masukkan data Anda di bawah ini untuk membuat akun baru.</p>
                 </div>
                 
-                <form action="/login" method="post">
+                {% if error_message == "1" %}
+                <div class="bg-danger-100 border border-danger-300 text-danger px-4 py-3 rounded relative mb-5">
+                    <span class="block sm:inline">Username telah digunakan, gunakan username yang lain!</span>
+                </div>
+                {% endif %}
+                <form action="/prosesdaftar" method="post">
                     <div class="mb-10">
                         <div class="mb-5">
                             <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Username</div>
-                            <input type="text" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            <input type="text" name="username" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
                         </div>
                         <div class="mb-5">
                             <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kata Sandi</div>
                             <div class="">
-                                <input id="passwordInput" type="password" placeholder="Masukkan kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100 mb-1">
+                                <input id="passwordInput" type="password" name="password" placeholder="Masukkan kata sandi" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100 mb-1">
                                 <div id="passwordErr" class="font-plusjakarta text-sm text-danger hidden"></div>
                             </div>
                         </div>
