@@ -71,6 +71,13 @@ async def proseslogin(
         response = Response(status_code=302)
         response.headers["Location"] = redirect_url
         return response
+    
+@app.get("/logout")
+def home(request: Request):
+    redirect_url = "/"
+    response = Response(status_code=302)
+    response.headers["Location"] = redirect_url
+    return response
 
 @app.get("/")
 def home(request: Request):

@@ -11,10 +11,27 @@
     </head>
     <body>
         <div class="w-container m-auto flex">
-            <div class="bg-primary w-16 inline-block">
+            <div class="bg-primary w-16 inline-block relative">
                 <div class="mt-10">
-                    <div class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
-                        <img src="../assets/img/user.png" alt="" class="m-auto">
+                    <div id="popup" class="bg-white py-4 px-5 absolute left-full ml-2 border rounded-lg hidden">
+                        <div class="">
+                            <div class="font-plusjakarta text-base font-semibold text-netral-500 mb-3">
+                                fadhlijabbar
+                            </div>
+                            <hr class="mb-3">
+                            <div class="">
+                                <a href="/logout" class="flex">
+                                    <img src="../assets/img/logout.svg" alt="" class="mr-1">
+                                    <div class="font-plusjakarta text-base text-danger">
+                                        Keluar
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="user-btn" class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
+                        <img src="../assets/img/profile.svg" alt="" class="m-auto">
                     </div>
                     
                     <a href="">
@@ -103,5 +120,18 @@
                 e.target.value = sanitizedInput;
             }
         });
+    });
+
+    document.getElementById('user-btn').addEventListener('click', function() {
+        var popup = document.getElementById('popup');
+        popup.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', function(event) {
+        var popup = document.getElementById('popup');
+        var userBtn = document.getElementById('user-btn');
+        if (!popup.contains(event.target) && !userBtn.contains(event.target)) {
+            popup.classList.add('hidden');
+        }
     });
 </script>
