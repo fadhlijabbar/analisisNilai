@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analisis Nilai</title>
+        <title>Daftar</title>
+        <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
@@ -18,15 +19,19 @@
                 </div>
                 
                 {% if error_message == "1" %}
-                <div class="bg-danger-100 border border-danger-300 text-danger px-4 py-3 rounded relative mb-5">
+                <div class="font-plusjakarta bg-danger-100 border border-danger-300 text-danger px-4 py-3 rounded relative mb-5">
                     <span class="block sm:inline">Username telah digunakan, gunakan username yang lain!</span>
                 </div>
                 {% endif %}
                 <form action="/prosesdaftar" method="post">
                     <div class="mb-10">
                         <div class="mb-5">
+                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Nama</div>
+                            <input type="text" autocomplete="off" name="nama" placeholder="Masukkan nama" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                        </div>
+                        <div class="mb-5">
                             <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Username</div>
-                            <input type="text" name="username" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
+                            <input type="text" autocomplete="off" name="username" placeholder="Masukkan username" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
                         </div>
                         <div class="mb-5">
                             <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kata Sandi</div>
@@ -52,6 +57,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="py-10 text-center font-plusjakarta text-base text-netral-400 border-t">
+            Implementasi Algoritma ECLAT untuk Analisis Hasil Pembelajaran Siswa pada Nilai Rapor Siswa SMP berbasis Web
+        </div>
+        <!-- End Footer -->
     </body>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

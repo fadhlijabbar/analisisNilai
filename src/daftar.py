@@ -9,7 +9,7 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor()
 
-def daftarAkun(username: str, password: str):
+def daftarAkun(nama: str, username: str, password: str):
     db.connect()
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
@@ -20,8 +20,8 @@ def daftarAkun(username: str, password: str):
     if result[0] > 0:
         return "Username sudah terdaftar"
 
-    register_query = "INSERT INTO user (username, password) VALUES (%s, %s)"
-    cursor.execute(register_query, (username, hashed_password.decode('utf-8')))
+    register_query = "INSERT INTO user (nama, username, password) VALUES (%s, %s, %s)"
+    cursor.execute(register_query, (nama, username, hashed_password.decode('utf-8')))
     db.commit()
 
     db.close()

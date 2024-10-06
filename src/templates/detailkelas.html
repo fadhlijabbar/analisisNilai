@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kelas {{kelas}}</title>
+        <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="w-full mt-10 mb-20">
+            <!-- Container -->
+            <div class="w-container flex m-auto">
+                <!-- Side Left Area -->
+                <div class="w-sideleft mr-20">
+                    <!-- Main Menu Area -->
+                    <div class="mb-6">
+                        <a href="/analisis">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/badge.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/riwayat">
+                            <div class="py-3 px-5 border rounded-lg bg-white mb-3">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/history.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Riwayat</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/kelas">
+                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/kelas.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Kelas</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Main Menu Area -->
+
+                    <!-- List Mata Pelajaran Area -->
+                    <div>
+                        <!-- Heading List Mata Pelajaran -->
+                        <div class="font-plusjakarta text-base font-semibold text-netral-500 mb-3">
+                            Mata Pelajaran (7)
+                        </div>
+                        <!-- End Heading List Mata Pelajaran -->
+
+                        <!-- List Mata Pelajaran -->
+                        <div>
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pkn">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-1.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Kewarganegaraan
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PKN | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/bin">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-2.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Indonesia
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIN | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/big">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-3.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Inggris
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIG | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ipa">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-4.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Alam
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPA | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ips">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-5.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Sosial
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPS | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/mtk">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-6.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Matematika
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.MTK | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pjo">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-7.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Jasmani dan Olahraga
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PJO | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+                        </div>
+                        <!-- End List Mata Pelajaran -->
+                    </div>
+                    <!-- End List Mata Pelajaran Area -->
+                </div>
+                <!-- End Side Left Area -->
+
+                <!-- Side Right Area -->
+                <div class="w-sideright">
+                    <!-- Account Area -->
+                    <div class="flex items-center mb-10 relative">
+                        <div class="flex items-center">
+                            <img src="../assets/img/profile.svg" alt="" class="mr-2">
+                            <div class="font-plusjakarta font-semibold text-base text-netral-500">
+                                {{ username }}
+                            </div>
+                        </div>
+
+                        <img src="../assets/img/Menu.svg" alt="" class="ml-auto cursor-pointer" id="menu-btn">
+
+                        <div class="py-3 px-5 bg-white hover:bg-grey-100 border rounded-lg absolute right-0 top-10 hidden" id="menu-out">
+                            <a href="/logout" class="flex items-center ">
+                                <img src="../assets/img/logout.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta text-base text-danger">
+                                    Keluar
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Account Area -->
+
+                    <!-- Main Riwayat Area -->
+                    <div>
+                        <!-- Heading Main Riwayat -->
+                        <div class="mb-10">
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Kelas {{kelas}}</div>
+                                <div class="font-plusjakarta text-netral-400 text-base">Hasil analisis nilai hasil belajar kelas {{kelas}}</div>
+                        </div>
+                        <!-- End Heading Main Riwayat -->
+
+                        <div class="">
+                            <div class="w-full flex flex-wrap mb-5 gap-1">
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byAll">Semua</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byPKN">Pendidikan Kewarganegaraan</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byBIN">Bahasa Indonesia</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byBIG">Bahasa Inggris</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byIPA">Ilmu Pengetahuan Alam</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byIPS">Ilmu Pengetahuan Sosial</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byMTK">Matematika</div>
+                                <div class="font-plusjakarta font-semibold text-xs py-2 px-3 border inline-flex rounded-lg text-netral-500 cursor-pointer" id="byPJO">Pendidikan Jasmani dan Olahraga</div>
+                            </div>
+                            
+                            <table class="bg-grey-100 border border-grey-200 rounded-xl w-full">
+                                <tr>
+                                    <td class="text-center py-4 font-plusjakarta text-base font-semibold text-netral-500 w-1/5">No.</td>
+                                    <td class="text-center py-4 font-plusjakarta text-base font-semibold text-netral-500 w-2/5">Nama</td>
+                                    <td class="text-center py-4 font-plusjakarta text-base font-semibold text-netral-500 w-2/5">Hasil Analisis</td>
+                                </tr>
+                                {% if resultByAll %}
+                                    {% for dataAll in resultByAll %}
+                                    <tr id="resultByAll{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataAll.id_riwayat}}">{{dataAll.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% if dataAll.analysis_result %}
+                                                {% for mapel in dataAll.analysis_result %}
+                                                    {% if mapel %}
+                                                        {{ mapel }}{% if not loop.last %}, {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByAll1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+                                
+                                {% if resultByPKN %}
+                                    {% for dataPKN in resultByPKN %}
+                                    <tr id="resultByPKN{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataPKN.id_riwayat}}">{{dataPKN.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataPKN.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByPKN1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+
+                                {% if resultByBIN %}
+                                    {% for dataBIN in resultByBIN %}
+                                    <tr id="resultByBIN{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataBIN.id_riwayat}}">{{dataBIN.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataBIN.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByBIN1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+
+                                {% if resultByBIG %}
+                                    {% for dataBIG in resultByBIG %}
+                                    <tr id="resultByBIG{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataBIG.id_riwayat}}">{{dataBIG.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataBIG.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByBIG1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+
+                                {% if resultByIPA %}
+                                    {% for dataIPA in resultByIPA %}
+                                    <tr id="resultByIPA{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataIPA.id_riwayat}}">{{dataIPA.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataIPA.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByIPA1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+                                
+                                {% if resultByIPS %}
+                                    {% for dataIPS in resultByIPS %}
+                                    <tr id="resultByIPS{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataIPS.id_riwayat}}">{{dataIPS.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataIPS.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByIPS1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+
+                                {% if resultByMTK %}
+                                    {% for dataMTK in resultByMTK %}
+                                    <tr id="resultByMTK{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataMTK.id_riwayat}}">{{dataMTK.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataMTK.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByMTK1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+
+                                {% if resultByPJO %}
+                                    {% for dataPJO in resultByPJO %}
+                                    <tr id="resultByPJO{{loop.index}}">
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{ loop.index }}</td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas}}/{{dataPJO.id_riwayat}}">{{dataPJO.nama}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">
+                                            {% for mapel in dataPJO.analysis_result %}
+                                            {{mapel}}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr id="resultByPJO1">
+                                    <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada hasil analisis</td>
+                                </tr>
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Main Riwayat Area -->
+                </div>
+                <!-- End Side Right Area -->
+            </div>
+            <!-- End Container -->
+        </div>
+
+        <!-- Footer -->
+        <div class="py-10 text-center font-plusjakarta text-base text-netral-400 border-t">
+            Implementasi Algoritma ECLAT untuk Analisis Hasil Pembelajaran Siswa pada Nilai Rapor Siswa SMP berbasis Web
+        </div>
+        <!-- End Footer -->
+    </body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
+
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
+
+function updateVisibility(state) {
+    // Hide all result elements
+    const results = document.querySelectorAll("[id^='resultBy']");
+    results.forEach(element => element.classList.add("hidden"));
+
+    // Construct the dynamic ID prefix based on the state
+    const statePrefix = state !== "byAll" ? state : "All";
+    const stateIdPrefix = `resultBy${statePrefix}`;
+    
+    // Show all elements matching the state prefix
+    const resultElements = document.querySelectorAll(`[id^='${stateIdPrefix}']`);
+    resultElements.forEach(element => element.classList.remove("hidden"));
+}
+
+function updateButtonAppearance(state) {
+    const buttons = ["byAll", "byPKN", "byBIN", "byBIG", "byIPA", "byIPS", "byMTK", "byPJO"];
+    buttons.forEach(id => {
+        const button = document.getElementById(id);
+        if (id === `by${state}`) {
+            button.classList.add("bg-primary-100", "border-primary");
+        } else {
+            button.classList.remove("bg-primary-100", "border-primary");
+        }
+    });
+}
+
+let currentState = "All";
+updateVisibility(currentState);
+updateButtonAppearance(currentState);
+
+function handleClick(event) {
+    const clickedId = event.target.id;
+    const state = clickedId.replace('by', '');
+    currentState = state;
+    updateVisibility(state);
+    updateButtonAppearance(state);
+}
+
+document.getElementById("byAll").addEventListener('click', handleClick);
+document.getElementById("byPKN").addEventListener('click', handleClick);
+document.getElementById("byBIN").addEventListener('click', handleClick);
+document.getElementById("byBIG").addEventListener('click', handleClick);
+document.getElementById("byIPA").addEventListener('click', handleClick);
+document.getElementById("byIPS").addEventListener('click', handleClick);
+document.getElementById("byMTK").addEventListener('click', handleClick);
+document.getElementById("byPJO").addEventListener('click', handleClick);
+
+
+</script>

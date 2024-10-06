@@ -10,6 +10,8 @@ module.exports = {
         'netral-500': '#101828',
         'netral-400': '#596275',
         'grey': '#EBEBEB',
+        'grey-100': '#FDFDFD',
+        'grey-200': '#EFEFEF',
         'disable': '#D4D4D4',
         'success': '#1C8C3B',
         'danger': '#D82D22',
@@ -21,10 +23,11 @@ module.exports = {
         'alert-600': '#DA8A01',
       },
       width: {
+        '330px': '330px',
         '350px': '350px',
-        'container': '1280px',
-        'sideleft': '470px',
-        'sideright': '750px',
+        'container': '1080px',
+        'sideleft': '300px',
+        'sideright': '700px',
       },
       height: {
         '60px': '60px',

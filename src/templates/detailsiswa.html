@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Riwayat - {{ dataRiwayat[0].nama_siswa }}</title>
+        <link rel="icon" type="image/x-icon" href="../../assets/img/SchoolIcon.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="w-full mt-10 mb-20">
+            <!-- Container -->
+            <div class="w-container flex m-auto">
+                <!-- Side Left Area -->
+                <div class="w-sideleft mr-20">
+                    <!-- Main Menu Area -->
+                    <div class="mb-6">
+                        <a href="/analisis">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
+                                <div class="flex items-center">
+                                    <img src="../../assets/img/badge.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/riwayat">
+                            <div class="py-3 px-5 border rounded-se-lg mb-3">
+                                <div class="flex items-center">
+                                    <img src="../../assets/img/history.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Riwayat</div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="/kelas">
+                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100">
+                                <div class="flex items-center">
+                                    <img src="../../assets/img/kelas.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Kelas</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- End Main Menu Area -->
+
+                    <!-- List Mata Pelajaran Area -->
+                    <div>
+                        <!-- Heading List Mata Pelajaran -->
+                        <div class="font-plusjakarta text-base font-semibold text-netral-500 mb-3">
+                            Mata Pelajaran (7)
+                        </div>
+                        <!-- End Heading List Mata Pelajaran -->
+
+                        <!-- List Mata Pelajaran -->
+                        <div>
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pkn">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-1.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Kewarganegaraan
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PKN | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/bin">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-2.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Indonesia
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIN | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/big">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-3.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Inggris
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIG | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ipa">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-4.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Alam
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPA | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ips">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-5.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Sosial
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPS | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/mtk">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-6.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Matematika
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.MTK | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pjo">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../../assets/img/mp-7.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Jasmani dan Olahraga
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PJO | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+                        </div>
+                        <!-- End List Mata Pelajaran -->
+                    </div>
+                    <!-- End List Mata Pelajaran Area -->
+                </div>
+                <!-- End Side Left Area -->
+
+                <!-- Side Right Area -->
+                <div class="w-sideright">
+                    <!-- Account Area -->
+                    <div class="flex items-center mb-10 relative">
+                        <div class="flex items-center">
+                            <img src="../../assets/img/profile.svg" alt="" class="mr-2">
+                            <div class="font-plusjakarta font-semibold text-base text-netral-500">
+                                {{ username }}
+                            </div>
+                        </div>
+
+                        <img src="../../assets/img/Menu.svg" alt="" class="ml-auto cursor-pointer" id="menu-btn">
+
+                        <div class="py-3 px-5 bg-white hover:bg-grey-100 border rounded-lg absolute right-0 top-10 hidden" id="menu-out">
+                            <a href="/logout" class="flex items-center ">
+                                <img src="../../assets/img/logout.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta text-base text-danger">
+                                    Keluar
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Account Area -->
+                    
+                    <!-- Riwayat Content Area -->
+                    <div>
+                        <a href="/kelas/{{kelas}}">
+                            <div class="flex mb-10">
+                                <img src="../../assets/img/left arrow.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta text-base text-primary-600 font-medium">
+                                    Kembali ke kelas
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="mb-10">
+                            <!-- List Nilai Mapel -->
+                            <div class="grid grid-cols-4 gap-5 mb-10">
+                                <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_pkn }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Pendidikan Kewarganegaraan
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_bin }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Bahasa Indonesia
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_big }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Bahasa Inggris
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_ipa }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Ilmu Pengetahuan Alam
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_ips }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Ilmu Pengetahuan Sosial
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_mtk }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Matematika
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_pjo }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Pendidikan Jasmani dan Olahraga
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                            </div>
+                            <!-- End List Nilai Mapel -->
+
+                            {% if dataAnalysis %}
+                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-5"><b>{{ dataRiwayat[0].nama_siswa }}</b> cenderung memiliki nilai hasil belajar yang tinggi pada mata pelajaran:</div>
+                            {% else %}
+                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-5"><b>{{ dataRiwayat[0].nama_siswa }}</b> tidak memiliki kecenderungan untuk memiliki nilai hasil belajar yang tinggi pada mata pelajaran apapun.</div>
+                            {% endif %}
+
+                            <div class="flex gap-3 flex-wrap">
+                                {% if dataAnalysis %}
+                                    {% for item in dataAnalysis %}
+                                        {% if item.mapel == "PKN" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-1.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Pendidikan Kewarganegaraan
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "BIN" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-2.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Bahasa Indonesia
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "BIG" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-3.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Bahasa Inggris
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "IPA" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-4.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Ilmu Pengetahuan Alam
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "IPS" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-5.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Ilmu Pengetahuan Sosial
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "MTK" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-6.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Matematika
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "PJO" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../../assets/img/mp-7.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Pendidikan Jasmani dan Olahraga
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if dataAnalysis %}
+                        <!-- Rekomendasi -->
+                        <div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Apa yang harus dilakukan pendidik?</div>
+    
+                                <div class="font-plusjakarta font-base text-netral-400">
+                                    Pendidik dapat menjadikan hasil analisis nilai hasil belajar peserta didik ini sebagai acuan dalam pelaksanaan pembelajaran dan asesmen dengan pendekatan <i class="font-semibold">teaching at the right level</i>.
+                                </div>
+                            </div>
+    
+                            <div class="mb-10">
+                                <div class="mb-3">
+                                    <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">1. Penyesuaian Tujuan Pembelajaran</div>
+        
+                                    <div class="font-plusjakarta font-base text-netral-400">
+                                        Pembelajaran diawali dengan pemetaan kemampuan prasyarat agar dapat merencanakan tindak lanjut yang tepat, termasuk melakukan penyesuaian Tujuan Pembelajaran. Peserta didik yang belum mencapai capaian pembelajaran mendapatkan pendampingan agar mencapai capaian pembelajarannya.
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">2. Pembelajaran Berdiferensiasi</div>
+        
+                                    <div class="font-plusjakarta font-base text-netral-400">
+                                        Peserta didik dalam fase perkembangan yang sama bisa memiliki tingkat pemahaman dan kesiapan yang berbeda. Cara dan materi pembelajaran divariasikan berdasarkan tingkat pemahaman dan kesiapan peserta didik.
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="mb-10">
+                                <div class="font-plusjakarta font-base text-netral-400">
+                                    (Baca selengkapnya: <a href="https://pusatinformasi.guru.kemdikbud.go.id/hc/en-us/articles/14142735013145-Pembelajaran-Sesuai-dengan-Tingkat-Kesiapan-dan-Pemahaman-Peserta-Didik" class="text-primary-600 underline" target="_blank">Pembelajaran Sesuai dengan Tingkat Kesiapan dan Pemahaman Peserta Didik – Merdeka Mengajar (kemdikbud.go.id)</a>)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Rekomendasi -->
+                         {% endif %}
+                    </div>
+                    <!-- End Riwayat Content Area -->
+                </div>
+                <!-- End Side Right Area -->
+            </div>
+            <!-- End Container -->
+        </div>
+
+        <!-- Footer -->
+        <div class="py-10 text-center font-plusjakarta text-base text-netral-400 border-t">
+            Implementasi Algoritma ECLAT untuk Analisis Hasil Pembelajaran Siswa pada Nilai Rapor Siswa SMP berbasis Web
+        </div>
+        <!-- End Footer -->
+    </body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
+
+    // Toggle menu visibility when the menu button is clicked
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
+    });
+
+    // Hide menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
+</script>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analisis Nilai Hasil Belajar</title>
+        <title>Riwayat - {{ dataRiwayat[0].nama_siswa }}</title>
         <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
                     <!-- Main Menu Area -->
                     <div class="mb-6">
                         <a href="/analisis">
-                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100 mb-3">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
                                 <div class="flex items-center">
                                     <img src="../assets/img/badge.svg" alt="" class="mr-2">
                                     <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
@@ -28,14 +28,14 @@
                         </a>
 
                         <a href="/riwayat">
-                            <div class="py-3 px-5 border rounded-lg bg-white mb-3">
+                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100 mb-3">
                                 <div class="flex items-center">
                                     <img src="../assets/img/history.svg" alt="" class="mr-2">
                                     <div class="font-plusjakarta text-netral-500 text-base">Riwayat</div>
                                 </div>
                             </div>
                         </a>
-
+                        
                         <a href="/kelas">
                             <div class="py-3 px-5 border rounded-lg bg-white">
                                 <div class="flex items-center">
@@ -233,117 +233,224 @@
                         </div>
                     </div>
                     <!-- End Account Area -->
-
-                    <!-- Welcome Badge -->
-                    <div class="p-10 bg-grey-100 rounded-xl mb-10 border border-grey-200">
-                        <div class="flex items-center">
-                            <img src="../assets/img/School.svg" alt="" class="mr-5">
-                            <div>
-                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Optimalkan Pembelajaran di Sekolah!</div>
-                                <div class="font-plusjakarta text-netral-400 text-base">Analisis nilai hasil belajar siswa untuk membantu kegiatan pembelajaran sebagai acuan dalam menggunakan pendekatan <i class="font-semibold">teaching at the right level</i>.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Welcome Badge -->
-
-                    <!-- Analisis Area -->
+                    
+                    <!-- Riwayat Content Area -->
                     <div>
-                        <div class="mb-10">
-                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Analisis Nilai Hasil Belajar Siswa</div>
-                            <div class="font-plusjakarta text-netral-400 text-base">Masukkan nilai pada setiap mata pelajaran dari siswa yang akan dianalisis di bawah ini.</div>
-                        </div>
-
-                        <form action="/prosesanalisis" method="post">
-                            <div>
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Nama</div>
-                                            <input type="text" name="nama_siswa" placeholder="Masukkan nama siswa" autocomplete="off" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                        </div>
-                                    </div>
-                                    <div class="w-330px">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kelas</div>
-                                            <select name="kelas" id="" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                {% if optionKelas %}
-                                                    {% for kelas in optionKelas %}
-                                                    <option value="{{kelas[1]}}">{{kelas[1]}}</option>
-                                                    {% endfor %}
-                                                {% else %}
-                                                <option value="" disabled selected>Pilih Kelas</option>
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <hr class="mb-10 border-grey-200">
-        
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Kewarganegaraan</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai1" name="nilai_pkn" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr1" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Indonesia</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai2" name="nilai_bin" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr2" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Inggris</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai3" name="nilai_big" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr3" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Alam</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai4" name="nilai_ipa" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr4" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="w-330px">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Sosial</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai5" name="nilai_ips" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr5" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Matematika</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai6" name="nilai_mtk" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr6" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Jasmani dan Olahraga</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai7" name="nilai_pjo" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr7" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="">
-                                    <input type="submit" value="Analisis" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none" disabled>
+                        <a href="/riwayat">
+                            <div class="flex mb-10">
+                                <img src="../assets/img/left arrow.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta text-base text-primary-600 font-medium">
+                                    Kembali ke riwayat
                                 </div>
                             </div>
-                        </form>
+                        </a>
+
+                        <div class="mb-10">
+                            <!-- List Nilai Mapel -->
+                            <div class="grid grid-cols-4 gap-5 mb-10">
+                                <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_pkn }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Pendidikan Kewarganegaraan
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_bin }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Bahasa Indonesia
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_big }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Bahasa Inggris
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_ipa }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Ilmu Pengetahuan Alam
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_ips }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Ilmu Pengetahuan Sosial
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_mtk }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Matematika
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                                 <!-- Nilai Mapel -->
+                                <div>
+                                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
+                                        {{ dataRiwayat[0].nilai_pjo }}
+                                    </div>
+                                    <div class="font-plusjakarta text-base text-netral-400">
+                                        Pendidikan Jasmani dan Olahraga
+                                    </div>
+                                </div>
+                                <!-- End Nilai Mapel -->
+                            </div>
+                            <!-- End List Nilai Mapel -->
+                            
+                            {% if dataAnalysis %}
+                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-5"><b>{{ dataRiwayat[0].nama_siswa }}</b> cenderung memiliki nilai hasil belajar yang tinggi pada mata pelajaran:</div>
+                            {% else %}
+                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-5"><b>{{ dataRiwayat[0].nama_siswa }}</b> tidak memiliki kecenderungan untuk memiliki nilai hasil belajar yang tinggi pada mata pelajaran apapun.</div>
+                            {% endif %}
+
+                            <div class="flex gap-3 flex-wrap">
+                                {% if dataAnalysis %}
+                                    {% for item in dataAnalysis %}
+                                        {% if item.mapel == "PKN" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-1.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Pendidikan Kewarganegaraan
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "BIN" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-2.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Bahasa Indonesia
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "BIG" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-3.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Bahasa Inggris
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "IPA" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-4.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Ilmu Pengetahuan Alam
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "IPS" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-5.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Ilmu Pengetahuan Sosial
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "MTK" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-6.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Matematika
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% elif item.mapel == "PJO" %}
+                                        <!-- Mapel Content -->
+                                        <div class="bg-grey-100 border border-grey-200 inline-flex p-4 rounded-lg">
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/mp-7.svg" alt="" class="w-8 mr-3">
+                                                <div class="font-plusjakarta font-semibold text-base">
+                                                    Pendidikan Jasmani dan Olahraga
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Mapel Content -->
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        {% if dataAnalysis %}
+                        <!-- Rekomendasi -->
+                        <div>
+                            <div class="mb-5">
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Apa yang harus dilakukan pendidik?</div>
+    
+                                <div class="font-plusjakarta font-base text-netral-400">
+                                    Pendidik dapat menjadikan hasil analisis nilai hasil belajar peserta didik ini sebagai acuan dalam pelaksanaan pembelajaran dan asesmen dengan pendekatan <i class="font-semibold">teaching at the right level</i>.
+                                </div>
+                            </div>
+    
+                            <div class="mb-10">
+                                <div class="mb-3">
+                                    <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">1. Penyesuaian Tujuan Pembelajaran</div>
+        
+                                    <div class="font-plusjakarta font-base text-netral-400">
+                                        Pembelajaran diawali dengan pemetaan kemampuan prasyarat agar dapat merencanakan tindak lanjut yang tepat, termasuk melakukan penyesuaian Tujuan Pembelajaran. Peserta didik yang belum mencapai capaian pembelajaran mendapatkan pendampingan agar mencapai capaian pembelajarannya.
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">2. Pembelajaran Berdiferensiasi</div>
+        
+                                    <div class="font-plusjakarta font-base text-netral-400">
+                                        Peserta didik dalam fase perkembangan yang sama bisa memiliki tingkat pemahaman dan kesiapan yang berbeda. Cara dan materi pembelajaran divariasikan berdasarkan tingkat pemahaman dan kesiapan peserta didik.
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="mb-10">
+                                <div class="font-plusjakarta font-base text-netral-400">
+                                    (Baca selengkapnya: <a href="https://pusatinformasi.guru.kemdikbud.go.id/hc/en-us/articles/14142735013145-Pembelajaran-Sesuai-dengan-Tingkat-Kesiapan-dan-Pemahaman-Peserta-Didik" class="text-primary-600 underline" target="_blank">Pembelajaran Sesuai dengan Tingkat Kesiapan dan Pemahaman Peserta Didik – Merdeka Mengajar (kemdikbud.go.id)</a>)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Rekomendasi -->
+                        {% endif %}
                     </div>
-                    <!-- End Analisis Area -->
+                    <!-- End Riwayat Content Area -->
                 </div>
                 <!-- End Side Right Area -->
             </div>
@@ -359,105 +466,21 @@
 </html>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const menuBtn = document.getElementById("menu-btn");
-        const menuOut = document.getElementById("menu-out");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
 
-        // Toggle menu visibility when the menu button is clicked
-        menuBtn.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menuOut.classList.toggle("hidden");
-        });
-
-        // Hide menu when clicking outside of it
-        document.addEventListener("click", (event) => {
-            if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
-                menuOut.classList.add("hidden");
-            }
-        });
-    });
-    // Function to update error messages and button status
-    function validateForm() {
-        // Get input elements
-        const nilaiInputs = [
-            document.getElementById('nilai1'),
-            document.getElementById('nilai2'),
-            document.getElementById('nilai3'),
-            document.getElementById('nilai4'),
-            document.getElementById('nilai5'),
-            document.getElementById('nilai6'),
-            document.getElementById('nilai7')
-        ];
-        const errorElements = [
-            document.getElementById('nilaiErr1'),
-            document.getElementById('nilaiErr2'),
-            document.getElementById('nilaiErr3'),
-            document.getElementById('nilaiErr4'),
-            document.getElementById('nilaiErr5'),
-            document.getElementById('nilaiErr6'),
-            document.getElementById('nilaiErr7')
-        ];
-
-        const kelasSelect = document.querySelector('select[name="kelas"]'); 
-
-        const submitButton = document.querySelector('input[type="submit"]');
-        
-        let allFilled = true;
-        let hasError = false;
-        
-        // Loop through each input to check values
-        nilaiInputs.forEach((input, index) => {
-            const value = parseFloat(input.value);
-            if (value <= 0 || value > 100) {
-                errorElements[index].textContent = "*nilai harus berisi 1-100";
-                errorElements[index].classList.remove('hidden');
-                nilaiInputs[index].classList.add('mb-1');
-                nilaiInputs[index].classList.remove('focus:bg-primary-100');
-                nilaiInputs[index].classList.remove('outline-primary');
-                nilaiInputs[index].classList.add('focus:bg-danger-100');
-                nilaiInputs[index].classList.add('outline-danger');
-                hasError = true;
-            } else {
-                errorElements[index].classList.add('hidden');
-                nilaiInputs[index].classList.remove('mb-1');
-                nilaiInputs[index].classList.add('focus:bg-primary-100');
-                nilaiInputs[index].classList.add('outline-primary');
-                nilaiInputs[index].classList.remove('focus:bg-danger-100');
-                nilaiInputs[index].classList.remove('outline-danger');
-            }
-            
-            if (input.value === '') {
-                allFilled = false;
-            }
-        });
-
-        // Validate select element
-        if (kelasSelect.value === '') {
-            hasError = true;
-        } else {
-            hasError = false;
-        }
-        
-        // Update submit button status
-        if (allFilled && !hasError) {
-            submitButton.disabled = false;
-            submitButton.classList.remove('bg-disable');
-            submitButton.classList.add('bg-primary', 'hover:bg-primary-600');
-        } else {
-            submitButton.disabled = true;
-            submitButton.classList.add('bg-disable');
-            submitButton.classList.remove('bg-primary', 'hover:bg-primary-600');
-        }
-    }
-
-    // Attach event listeners to inputs
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('input', validateForm);
+    // Toggle menu visibility when the menu button is clicked
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
     });
 
-    // Attach event listener to select
-    document.querySelector('select[name="kelas"]').addEventListener('change', validateForm);
-
-    // Initial validation on page load
-    window.addEventListener('load', validateForm);
+    // Hide menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
 </script>

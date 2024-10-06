@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analisis Nilai Hasil Belajar</title>
+        <title>Kelas</title>
         <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
                     <!-- Main Menu Area -->
                     <div class="mb-6">
                         <a href="/analisis">
-                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100 mb-3">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
                                 <div class="flex items-center">
                                     <img src="../assets/img/badge.svg" alt="" class="mr-2">
                                     <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
@@ -37,7 +37,7 @@
                         </a>
 
                         <a href="/kelas">
-                            <div class="py-3 px-5 border rounded-lg bg-white">
+                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100">
                                 <div class="flex items-center">
                                     <img src="../assets/img/kelas.svg" alt="" class="mr-2">
                                     <div class="font-plusjakarta text-netral-500 text-base">Kelas</div>
@@ -234,116 +234,44 @@
                     </div>
                     <!-- End Account Area -->
 
-                    <!-- Welcome Badge -->
-                    <div class="p-10 bg-grey-100 rounded-xl mb-10 border border-grey-200">
-                        <div class="flex items-center">
-                            <img src="../assets/img/School.svg" alt="" class="mr-5">
-                            <div>
-                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Optimalkan Pembelajaran di Sekolah!</div>
-                                <div class="font-plusjakarta text-netral-400 text-base">Analisis nilai hasil belajar siswa untuk membantu kegiatan pembelajaran sebagai acuan dalam menggunakan pendekatan <i class="font-semibold">teaching at the right level</i>.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Welcome Badge -->
-
-                    <!-- Analisis Area -->
+                    <!-- Main Riwayat Area -->
                     <div>
-                        <div class="mb-10">
-                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Analisis Nilai Hasil Belajar Siswa</div>
-                            <div class="font-plusjakarta text-netral-400 text-base">Masukkan nilai pada setiap mata pelajaran dari siswa yang akan dianalisis di bawah ini.</div>
-                        </div>
-
-                        <form action="/prosesanalisis" method="post">
+                        <!-- Heading Main Riwayat -->
+                        <div class="flex items-center mb-10">
                             <div>
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Nama</div>
-                                            <input type="text" name="nama_siswa" placeholder="Masukkan nama siswa" autocomplete="off" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                        </div>
-                                    </div>
-                                    <div class="w-330px">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kelas</div>
-                                            <select name="kelas" id="" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                {% if optionKelas %}
-                                                    {% for kelas in optionKelas %}
-                                                    <option value="{{kelas[1]}}">{{kelas[1]}}</option>
-                                                    {% endfor %}
-                                                {% else %}
-                                                <option value="" disabled selected>Pilih Kelas</option>
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <hr class="mb-10 border-grey-200">
-        
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Kewarganegaraan</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai1" name="nilai_pkn" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr1" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Indonesia</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai2" name="nilai_bin" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr2" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Inggris</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai3" name="nilai_big" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr3" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Alam</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai4" name="nilai_ipa" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr4" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="w-330px">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Sosial</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai5" name="nilai_ips" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr5" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Matematika</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai6" name="nilai_mtk" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr6" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Jasmani dan Olahraga</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai7" name="nilai_pjo" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr7" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="">
-                                    <input type="submit" value="Analisis" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none" disabled>
-                                </div>
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Daftar Kelas ({{ dataKelas | length }})</div>
+                                <div class="font-plusjakarta text-netral-400 text-base">Berikut ini daftar kelas yang tersedia</div>
                             </div>
-                        </form>
+                            <a href="/kelas/tambah" class="ml-auto">
+                                <button class="font-plusjakarta font-medium text-base bg-primary hover:bg-primary-600 flex gap-1 py-3 pl-4 pr-5 rounded text-white">
+                                    <img src="../assets/img/plus.svg" alt="">Tambah Kelas
+                                </button>
+                            </a>
+                        </div>
+                        <!-- End Heading Main Riwayat -->
+
+                        <div class="">
+                            <table class="bg-grey-100 border border-grey-200 rounded-xl w-full">
+                                <tr>
+                                    <td class="text-center py-4 font-plusjakarta text-base font-semibold text-netral-500">Kelas</td>
+                                    <td class="text-center py-4 font-plusjakarta text-base font-semibold text-netral-500">Wali Kelas</td>
+                                </tr>
+                                {% if dataKelas %}
+                                    {% for kelas in dataKelas %}
+                                    <tr>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-primary underline"><a href="/kelas/{{kelas[1]}}">{{kelas[1]}}</a></td>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400">{{kelas[2]}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td class="text-center py-4 font-plusjakarta text-base text-netral-400" colspan="3">Belum ada kelas yang tersedia</td>
+                                    </tr>
+                                {% endif %}
+                            </table>
+                        </div>
                     </div>
-                    <!-- End Analisis Area -->
+                    <!-- End Main Riwayat Area -->
                 </div>
                 <!-- End Side Right Area -->
             </div>
@@ -359,105 +287,21 @@
 </html>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const menuBtn = document.getElementById("menu-btn");
-        const menuOut = document.getElementById("menu-out");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
 
-        // Toggle menu visibility when the menu button is clicked
-        menuBtn.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menuOut.classList.toggle("hidden");
-        });
-
-        // Hide menu when clicking outside of it
-        document.addEventListener("click", (event) => {
-            if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
-                menuOut.classList.add("hidden");
-            }
-        });
-    });
-    // Function to update error messages and button status
-    function validateForm() {
-        // Get input elements
-        const nilaiInputs = [
-            document.getElementById('nilai1'),
-            document.getElementById('nilai2'),
-            document.getElementById('nilai3'),
-            document.getElementById('nilai4'),
-            document.getElementById('nilai5'),
-            document.getElementById('nilai6'),
-            document.getElementById('nilai7')
-        ];
-        const errorElements = [
-            document.getElementById('nilaiErr1'),
-            document.getElementById('nilaiErr2'),
-            document.getElementById('nilaiErr3'),
-            document.getElementById('nilaiErr4'),
-            document.getElementById('nilaiErr5'),
-            document.getElementById('nilaiErr6'),
-            document.getElementById('nilaiErr7')
-        ];
-
-        const kelasSelect = document.querySelector('select[name="kelas"]'); 
-
-        const submitButton = document.querySelector('input[type="submit"]');
-        
-        let allFilled = true;
-        let hasError = false;
-        
-        // Loop through each input to check values
-        nilaiInputs.forEach((input, index) => {
-            const value = parseFloat(input.value);
-            if (value <= 0 || value > 100) {
-                errorElements[index].textContent = "*nilai harus berisi 1-100";
-                errorElements[index].classList.remove('hidden');
-                nilaiInputs[index].classList.add('mb-1');
-                nilaiInputs[index].classList.remove('focus:bg-primary-100');
-                nilaiInputs[index].classList.remove('outline-primary');
-                nilaiInputs[index].classList.add('focus:bg-danger-100');
-                nilaiInputs[index].classList.add('outline-danger');
-                hasError = true;
-            } else {
-                errorElements[index].classList.add('hidden');
-                nilaiInputs[index].classList.remove('mb-1');
-                nilaiInputs[index].classList.add('focus:bg-primary-100');
-                nilaiInputs[index].classList.add('outline-primary');
-                nilaiInputs[index].classList.remove('focus:bg-danger-100');
-                nilaiInputs[index].classList.remove('outline-danger');
-            }
-            
-            if (input.value === '') {
-                allFilled = false;
-            }
-        });
-
-        // Validate select element
-        if (kelasSelect.value === '') {
-            hasError = true;
-        } else {
-            hasError = false;
-        }
-        
-        // Update submit button status
-        if (allFilled && !hasError) {
-            submitButton.disabled = false;
-            submitButton.classList.remove('bg-disable');
-            submitButton.classList.add('bg-primary', 'hover:bg-primary-600');
-        } else {
-            submitButton.disabled = true;
-            submitButton.classList.add('bg-disable');
-            submitButton.classList.remove('bg-primary', 'hover:bg-primary-600');
-        }
-    }
-
-    // Attach event listeners to inputs
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('input', validateForm);
+    // Toggle menu visibility when the menu button is clicked
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
     });
 
-    // Attach event listener to select
-    document.querySelector('select[name="kelas"]').addEventListener('change', validateForm);
-
-    // Initial validation on page load
-    window.addEventListener('load', validateForm);
+    // Hide menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
 </script>

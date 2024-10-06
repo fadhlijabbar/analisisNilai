@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analisis Nilai Hasil Belajar</title>
+        <title>Mata Pelajaran - {% if current_mapel == 'pkn' %} Pendidikan Kewarganegaraan {% elif current_mapel == 'bin' %} Bahasa Indonesia {% elif current_mapel == 'big' %} Bahasa Inggris {% elif current_mapel == 'ipa' %} Ilmu Pengetahuan Alam {% elif current_mapel == 'ips' %} Ilmu Pengetahuan Sosial {% elif current_mapel == 'mtk' %} Matematika {% elif current_mapel == 'pjo' %} Pendidikan Jasmani dan Olahraga {% endif %}</title>
         <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
                     <!-- Main Menu Area -->
                     <div class="mb-6">
                         <a href="/analisis">
-                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100 mb-3">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
                                 <div class="flex items-center">
                                     <img src="../assets/img/badge.svg" alt="" class="mr-2">
                                     <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </a>
-
+                        
                         <a href="/kelas">
                             <div class="py-3 px-5 border rounded-lg bg-white">
                                 <div class="flex items-center">
@@ -59,7 +59,7 @@
                         <div>
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/pkn">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'pkn' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-1.svg" alt="" class="mr-3">
                                         <div>
@@ -80,7 +80,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/bin">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'bin' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-2.svg" alt="" class="mr-3">
                                         <div>
@@ -101,7 +101,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/big">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'big' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-3.svg" alt="" class="mr-3">
                                         <div>
@@ -122,7 +122,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/ipa">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'ipa' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-4.svg" alt="" class="mr-3">
                                         <div>
@@ -143,7 +143,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/ips">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'ips' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-5.svg" alt="" class="mr-3">
                                         <div>
@@ -164,7 +164,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/mtk">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'mtk' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-6.svg" alt="" class="mr-3">
                                         <div>
@@ -185,7 +185,7 @@
 
                             <!-- Mata Pelajaran -->
                             <a href="/mapel/pjo">
-                                <div class="border p-4 rounded-lg mb-3">
+                                <div class="border p-4 rounded-lg mb-3 {% if current_mapel == 'pjo' %}border-primary bg-primary-100{% endif %}">
                                     <div class="flex items-center">
                                         <img src="../assets/img/mp-7.svg" alt="" class="mr-3">
                                         <div>
@@ -234,116 +234,113 @@
                     </div>
                     <!-- End Account Area -->
 
-                    <!-- Welcome Badge -->
-                    <div class="p-10 bg-grey-100 rounded-xl mb-10 border border-grey-200">
-                        <div class="flex items-center">
-                            <img src="../assets/img/School.svg" alt="" class="mr-5">
-                            <div>
-                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Optimalkan Pembelajaran di Sekolah!</div>
-                                <div class="font-plusjakarta text-netral-400 text-base">Analisis nilai hasil belajar siswa untuk membantu kegiatan pembelajaran sebagai acuan dalam menggunakan pendekatan <i class="font-semibold">teaching at the right level</i>.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Welcome Badge -->
-
-                    <!-- Analisis Area -->
+                    <!-- Result Area -->
                     <div>
+                        <!-- Main Result Area -->
                         <div class="mb-10">
-                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Analisis Nilai Hasil Belajar Siswa</div>
-                            <div class="font-plusjakarta text-netral-400 text-base">Masukkan nilai pada setiap mata pelajaran dari siswa yang akan dianalisis di bawah ini.</div>
-                        </div>
-
-                        <form action="/prosesanalisis" method="post">
-                            <div>
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Nama</div>
-                                            <input type="text" name="nama_siswa" placeholder="Masukkan nama siswa" autocomplete="off" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                        </div>
-                                    </div>
-                                    <div class="w-330px">
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Kelas</div>
-                                            <select name="kelas" id="" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                {% if optionKelas %}
-                                                    {% for kelas in optionKelas %}
-                                                    <option value="{{kelas[1]}}">{{kelas[1]}}</option>
-                                                    {% endfor %}
-                                                {% else %}
-                                                <option value="" disabled selected>Pilih Kelas</option>
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
+                            <div class="mb-3">
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">
+                                    {% if current_mapel == 'pkn' %}
+                                    Pendidikan Kewarganegaraan
+                                    {% elif current_mapel == 'bin' %}
+                                    Bahasa Indonesia
+                                    {% elif current_mapel == 'big' %}
+                                    Bahasa Inggris
+                                    {% elif current_mapel == 'ipa' %}
+                                    Ilmu Pengetahuan Alam
+                                    {% elif current_mapel == 'ips' %}
+                                    Ilmu Pengetahuan Sosial
+                                    {% elif current_mapel == 'mtk' %}
+                                    Matematika
+                                    {% elif current_mapel == 'pjo' %}
+                                    Pendidikan Jasmani dan Olahraga
+                                    {% endif %}
                                 </div>
-    
-                                <hr class="mb-10 border-grey-200">
-        
-                                <div class="flex mb-10">
-                                    <div class="w-330px mr-10">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Kewarganegaraan</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai1" name="nilai_pkn" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr1" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Indonesia</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai2" name="nilai_bin" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr2" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Bahasa Inggris</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai3" name="nilai_big" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr3" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Alam</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai4" name="nilai_ipa" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr4" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="w-330px">
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Ilmu Pengetahuan Sosial</div>
-                                            <div>
-                                                <input type="number" max="100" id="nilai5" name="nilai_ips" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr5" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Matematika</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai6" name="nilai_mtk" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr6" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5">
-                                            <div class="font-plusjakarta mb-3 text-netral-500 font-semibold text-base">Pendidikan Jasmani dan Olahraga</div>
-                                            <div class="">
-                                                <input type="number" max="100" id="nilai7" name="nilai_pjo" placeholder="Masukkan nilai" class="font-plusjakarta text-sm text-netral-500 placeholder:text-netral-400 w-full py-3 px-4 bg-grey rounded outline-primary focus:bg-primary-100">
-                                                <div id="nilaiErr7" class="font-plusjakarta text-sm text-danger hidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="">
-                                    <input type="submit" value="Analisis" class="font-plusjakarta font-semibold w-full text-sm py-3 px-4 bg-disable rounded cursor-pointer text-white outline-none" disabled>
+                                <div class="font-plusjakarta text-netral-400 text-base">
+                                    {% if current_mapel == 'pkn' %}
+                                    Mata pelajaran <b>Pendidikan Kewarganegaraan</b> memiliki keterkaitan dengan {{ countMapel.PKN | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'bin' %}
+                                    Mata pelajaran <b>Bahasa Indonesia</b> memiliki keterkaitan dengan {{ countMapel.BIN | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'big' %}
+                                    Mata pelajaran <b>Bahasa Inggris</b> memiliki keterkaitan dengan {{ countMapel.BIG | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'ipa' %}
+                                    Mata pelajaran <b>Ilmu Pengetahuan Alam</b> memiliki keterkaitan dengan {{ countMapel.IPA | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'ips' %}
+                                    Mata pelajaran <b>Ilmu Pengetahuan Sosial</b> memiliki keterkaitan dengan {{ countMapel.IPS | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'mtk' %}
+                                    Mata pelajaran <b>Matematika</b> memiliki keterkaitan dengan {{ countMapel.MTK | length }} mata pelajaran lain.
+                                    {% elif current_mapel == 'pjo' %}
+                                    Mata pelajaran <b>Pendidikan Jasmani dan Olahraga</b> memiliki keterkaitan dengan {{ countMapel.PJO | length }} mata pelajaran lain.
+                                    {% endif %}
                                 </div>
                             </div>
-                        </form>
+    
+                            <div class="">
+                                <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">Apa yang harus dilakukan pendidik?</div>
+    
+                                <div class="font-plusjakarta font-base text-netral-400">
+                                        Pendidik dapat menjadikan hasil analisis nilai hasil belajar peserta didik ini sebagai acuan dalam pelaksanaan pembelajaran dan asesmen dengan pendekatan <i class="font-semibold">teaching at the right level</i>. (Baca selengkapnya: <a href="" class="text-primary-600 underline">Pembelajaran Sesuai dengan Tingkat Kesiapan dan Pemahaman Peserta Didik – Merdeka Mengajar (kemdikbud.go.id)</a>)
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Main Result Area -->
+
+                        <!-- Keterkaitan Mata Pelajaran Area -->
+                        <div class="">
+                            <!-- Heading Mata Pelajaran -->
+                            <div class="font-plusjakarta font-semibold text-base text-netral-500 mb-3">
+                                Keterkaitan Mata Pelajaran ({% if current_mapel == 'pkn' %}{{ countMapel.PKN | length }}{% elif current_mapel == 'bin' %}{{ countMapel.BIN | length }}{% elif current_mapel == 'big' %}{{ countMapel.BIG | length }}{% elif current_mapel == 'ipa' %}{{ countMapel.IPA | length }}{% elif current_mapel == 'ips' %}{{ countMapel.IPS | length }}{% elif current_mapel == 'mtk' %}{{ countMapel.MTK | length }}{% elif current_mapel == 'pjo' %}{{ countMapel.PJO | length }}{% endif %})
+                            </div>
+                            <!-- End Heading Mata Pelajaran -->
+
+                            <!-- Row Mata Pelajaran -->
+                            <div class="grid gap-3">
+                                {% for mapel in countMapel[current_mapel|upper] %}
+                                <!-- Container Mata Pelajaran -->
+                                <div class="py-6 px-8 rounded-lg bg-grey-100 border border-grey-200">
+                                    <div class="mb-6">
+                                        <div class="flex items-center mb-2">
+                                            <img src="../assets/img/{% if mapel == 'PKN' %}mp-1{% elif mapel == 'BIN' %}mp-2{% elif mapel == 'BIG' %}mp-3{% elif mapel == 'IPA' %}mp-4{% elif mapel == 'IPS' %}mp-5{% elif mapel == 'MTK' %}mp-6{% elif mapel == 'PJO' %}mp-7{% endif %}.svg" alt="" class="w-8 mr-3">
+                                            <div class="font-plusjakarta font-semibold text-base">
+                                                {% if mapel == 'PKN' %}
+                                                Pendidikan Kewarganegaraan
+                                                {% elif mapel == 'BIN' %}
+                                                Bahasa Indonesia
+                                                {% elif mapel == 'BIG' %}
+                                                Bahasa Inggris
+                                                {% elif mapel == 'IPA' %}
+                                                Ilmu Pengetahuan Alam
+                                                {% elif mapel == 'IPS' %}
+                                                Ilmu Pengetahuan Sosial
+                                                {% elif mapel == 'MTK' %}
+                                                Matematika
+                                                {% elif mapel == 'PJO' %}
+                                                Pendidikan Jasmani dan Olahraga
+                                                {% endif %} 
+                                            </div>
+                                        </div>
+
+                                        <div class="font-plusjakarta font-base text-netral-400">
+                                            Mata pelajaran <b>{% if current_mapel == 'pkn' %} Pendidikan Kewarganegaraan {% elif current_mapel == 'bin' %} Bahasa Indonesia {% elif current_mapel == 'big' %} Bahasa Inggris {% elif current_mapel == 'ipa' %} Ilmu Pengetahuan Alam {% elif current_mapel == 'ips' %} Ilmu Pengetahuan Sosial {% elif current_mapel == 'mtk' %} Matematika {% elif current_mapel == 'pjo' %} Pendidikan Jasmani dan Olahraga {% endif %}</b> memiliki keterkaitan dengan mata pelajaran <b>{% if mapel == 'PKN' %} Pendidikan Kewarganegaraan {% elif mapel == 'BIN' %} Bahasa Indonesia {% elif mapel == 'BIG' %} Bahasa Inggris {% elif mapel == 'IPA' %} Ilmu Pengetahuan Alam {% elif mapel == 'IPS' %} Ilmu Pengetahuan Sosial {% elif mapel == 'MTK' %} Matematika {% elif mapel == 'PJO' %} Pendidikan Jasmani dan Olahraga {% endif %}</b>.
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+                                        <div class="font-plusjakarta font-semibold text-netral-500 text-base mb-1">Apa artinya?</div>
+            
+                                        <div class="font-plusjakarta font-base text-netral-400">
+                                            Peserta didik yang memiliki nilai hasil belajar tinggi pada mata pelajaran {% if current_mapel == 'pkn' %} Pendidikan Kewarganegaraan {% elif current_mapel == 'bin' %} Bahasa Indonesia {% elif current_mapel == 'big' %} Bahasa Inggris {% elif current_mapel == 'ipa' %} Ilmu Pengetahuan Alam {% elif current_mapel == 'ips' %} Ilmu Pengetahuan Sosial {% elif current_mapel == 'mtk' %} Matematika {% elif current_mapel == 'pjo' %} Pendidikan Jasmani dan Olahraga {% endif %} <b>cenderung</b> memiliki nilai hasil belajar yang juga tinggi pada mata pelajaran {% if mapel == 'PKN' %} Pendidikan Kewarganegaraan {% elif mapel == 'BIN' %} Bahasa Indonesia {% elif mapel == 'BIG' %} Bahasa Inggris {% elif mapel == 'IPA' %} Ilmu Pengetahuan Alam {% elif mapel == 'IPS' %} Ilmu Pengetahuan Sosial {% elif mapel == 'MTK' %} Matematika {% elif mapel == 'PJO' %} Pendidikan Jasmani dan Olahraga {% endif %}.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Container Mata Pelajaran -->
+                                {% endfor %}
+                            </div>
+                            <!-- End Row Mata Pelajaran -->
+                        </div>
+                        <!-- End Keterkaitan Mata Pelajaran Area -->
                     </div>
-                    <!-- End Analisis Area -->
+                    <!-- End Result Area -->
                 </div>
                 <!-- End Side Right Area -->
             </div>
@@ -359,105 +356,21 @@
 </html>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const menuBtn = document.getElementById("menu-btn");
-        const menuOut = document.getElementById("menu-out");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
 
-        // Toggle menu visibility when the menu button is clicked
-        menuBtn.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menuOut.classList.toggle("hidden");
-        });
-
-        // Hide menu when clicking outside of it
-        document.addEventListener("click", (event) => {
-            if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
-                menuOut.classList.add("hidden");
-            }
-        });
-    });
-    // Function to update error messages and button status
-    function validateForm() {
-        // Get input elements
-        const nilaiInputs = [
-            document.getElementById('nilai1'),
-            document.getElementById('nilai2'),
-            document.getElementById('nilai3'),
-            document.getElementById('nilai4'),
-            document.getElementById('nilai5'),
-            document.getElementById('nilai6'),
-            document.getElementById('nilai7')
-        ];
-        const errorElements = [
-            document.getElementById('nilaiErr1'),
-            document.getElementById('nilaiErr2'),
-            document.getElementById('nilaiErr3'),
-            document.getElementById('nilaiErr4'),
-            document.getElementById('nilaiErr5'),
-            document.getElementById('nilaiErr6'),
-            document.getElementById('nilaiErr7')
-        ];
-
-        const kelasSelect = document.querySelector('select[name="kelas"]'); 
-
-        const submitButton = document.querySelector('input[type="submit"]');
-        
-        let allFilled = true;
-        let hasError = false;
-        
-        // Loop through each input to check values
-        nilaiInputs.forEach((input, index) => {
-            const value = parseFloat(input.value);
-            if (value <= 0 || value > 100) {
-                errorElements[index].textContent = "*nilai harus berisi 1-100";
-                errorElements[index].classList.remove('hidden');
-                nilaiInputs[index].classList.add('mb-1');
-                nilaiInputs[index].classList.remove('focus:bg-primary-100');
-                nilaiInputs[index].classList.remove('outline-primary');
-                nilaiInputs[index].classList.add('focus:bg-danger-100');
-                nilaiInputs[index].classList.add('outline-danger');
-                hasError = true;
-            } else {
-                errorElements[index].classList.add('hidden');
-                nilaiInputs[index].classList.remove('mb-1');
-                nilaiInputs[index].classList.add('focus:bg-primary-100');
-                nilaiInputs[index].classList.add('outline-primary');
-                nilaiInputs[index].classList.remove('focus:bg-danger-100');
-                nilaiInputs[index].classList.remove('outline-danger');
-            }
-            
-            if (input.value === '') {
-                allFilled = false;
-            }
-        });
-
-        // Validate select element
-        if (kelasSelect.value === '') {
-            hasError = true;
-        } else {
-            hasError = false;
-        }
-        
-        // Update submit button status
-        if (allFilled && !hasError) {
-            submitButton.disabled = false;
-            submitButton.classList.remove('bg-disable');
-            submitButton.classList.add('bg-primary', 'hover:bg-primary-600');
-        } else {
-            submitButton.disabled = true;
-            submitButton.classList.add('bg-disable');
-            submitButton.classList.remove('bg-primary', 'hover:bg-primary-600');
-        }
-    }
-
-    // Attach event listeners to inputs
-    document.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('input', validateForm);
+    // Toggle menu visibility when the menu button is clicked
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
     });
 
-    // Attach event listener to select
-    document.querySelector('select[name="kelas"]').addEventListener('change', validateForm);
-
-    // Initial validation on page load
-    window.addEventListener('load', validateForm);
+    // Hide menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
 </script>

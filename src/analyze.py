@@ -2,81 +2,120 @@ import uuid
 from datetime import datetime
 import pandas as pd
 import mysql.connector
-from fastapi import UploadFile
-from mlxtend.frequent_patterns import fpgrowth, association_rules
+from analysisresult import analysisProcess
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="skripsi"
-)
-cursor = db.cursor()
+def avgNilaiCounter(file_path):
+    data = pd.read_excel(file_path)
+    numeric_data = data.select_dtypes(include=['number'])
+    all_values = numeric_data.values.flatten()
+    all_values = all_values[~pd.isnull(all_values)]
+    rata_rata_total = all_values.mean()
+    avgNilai = round(rata_rata_total)
+    return avgNilai
 
 def analisisNilai(
-    analysis_name: str,
-    min_score: float,
-    min_support: float,
-    min_confidence: float,
-    file: UploadFile
+    nama_siswa: str,
+    kelas: str,
+    nilai_pkn: int,
+    nilai_bin: int,
+    nilai_big: int,
+    nilai_ipa: int,
+    nilai_ips: int,
+    nilai_mtk: int,
+    nilai_pjo: int,
+    id_user: int,
 ):
-    filenamebaru = f"{uuid.uuid4()}_{file.filename}"
-    file_location = f"files/{filenamebaru}"
-    with open(file_location, "wb+") as file_object:
-        file_object.write(file.file.read())
+    file_path = 'files/data_latih.xlsx'
+    avgNilai = avgNilaiCounter(file_path)
 
-    df = pd.read_excel(file_location)
+    perbandinganNilai = {
+        'nama_siswa': nama_siswa,
+        'nilai_pkn': nilai_pkn >= avgNilai,
+        'nilai_bin': nilai_bin >= avgNilai,
+        'nilai_big': nilai_big >= avgNilai,
+        'nilai_ipa': nilai_ipa >= avgNilai,
+        'nilai_ips': nilai_ips >= avgNilai,
+        'nilai_mtk': nilai_mtk >= avgNilai,
+        'nilai_pjo': nilai_pjo >= avgNilai,
+    }
 
-    frequent_items = fpgrowth(df, min_support=min_support/100, use_colnames=True)
-    rules = association_rules(frequent_items, metric="confidence", min_threshold=min_confidence/100)
-    print(rules)
+    new_data_instance = [mata_pelajaran for mata_pelajaran, melebihi in perbandinganNilai.items() if mata_pelajaran != 'nama_siswa' and melebihi]
 
-    rules = rules.drop(columns=['antecedent support', 'consequent support'])
+    # Insert data into riwayat table even if no subjects exceed avgNilai
+    id_riwayat = None  # Initialize here
 
-    db.connect()
+    try:
+        with mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="skripsi"
+        ) as db:
+            with db.cursor() as cursor:
+                current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                insert_query_riwayat = """
+                INSERT INTO riwayat (id_user, nama_siswa, kelas, nilai_pkn, nilai_bin, nilai_big, nilai_ipa, nilai_ips, nilai_mtk, nilai_pjo, date)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """
 
-    current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                cursor.execute(insert_query_riwayat, (
+                    id_user,
+                    nama_siswa,
+                    kelas,
+                    nilai_pkn,
+                    nilai_bin,
+                    nilai_big,
+                    nilai_ipa,
+                    nilai_ips,
+                    nilai_mtk,
+                    nilai_pjo,
+                    current_date
+                ))
 
-    insert_query_analysis = """
-    INSERT INTO analysis (date, analysis_name, data_file, filename, min_score, min_support, min_confidence)
-    VALUES (%s, %s, %s, %s, %s, %s, %s)
-    """
+                db.commit()
 
-    cursor.execute(insert_query_analysis, (
-        current_date,
-        analysis_name,
-        filenamebaru,
-        file.filename,
-        min_score,
-        min_support,
-        min_confidence,
-    ))
+                # Get the last inserted id_riwayat
+                cursor.execute("SELECT id_riwayat FROM riwayat ORDER BY id_riwayat DESC LIMIT 1")
+                id_riwayat = cursor.fetchone()[0]
+
+                # If no subjects exceed avgNilai, stop here
+                if not new_data_instance:
+                    return id_riwayat
+
+                nama_map = {
+                    'nilai_pkn': 'PKN',
+                    'nilai_bin': 'BIN',
+                    'nilai_big': 'BIG',
+                    'nilai_ipa': 'IPA',
+                    'nilai_ips': 'IPS',
+                    'nilai_mtk': 'MTK',
+                    'nilai_pjo': 'PJO'
+                }
+
+                new_data_instance = [nama_map[mata_pelajaran] for mata_pelajaran in new_data_instance]
+
+                hasilAnalisis = analysisProcess(new_data_instance)
+                print("Hasil: ", hasilAnalisis)
+
+                if hasilAnalisis:
+                    insert_query_analysis = """
+                    INSERT INTO analysisresult (id_riwayat, mapel)
+                    VALUES (%s, %s)
+                    """
+
+                    for mapel in hasilAnalisis:
+                        cursor.execute(insert_query_analysis, (
+                            id_riwayat,
+                            mapel
+                        ))
+
+                    db.commit()
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
     
-    db.commit()
+    if id_riwayat is None:
+        raise RuntimeError("Failed to create id_riwayat")
 
-    select_last_analysis = "SELECT id_analysis FROM analysis ORDER BY id_analysis DESC LIMIT 1"
-    cursor.execute(select_last_analysis)
-    id_analysis = cursor.fetchone()[0]
-
-    insert_query_rules = """
-    INSERT INTO rules (id_analysis, antecedents, consequents, support, confidence, lift, leverage, conviction, z_metric)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-    """
-
-    for index, row in rules.iterrows():
-        cursor.execute(insert_query_rules, (
-            id_analysis,
-            ', '.join(list(row['antecedents'])),
-            ', '.join(list(row['consequents'])),
-            row['support'],
-            row['confidence'],
-            row['lift'],
-            row['leverage'],
-            row['conviction'],
-            row['zhangs_metric']
-        ))
-        
-    db.commit()
-    db.close()
-
-    return id_analysis
+    return id_riwayat

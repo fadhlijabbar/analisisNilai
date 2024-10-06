@@ -3,250 +3,324 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analisis Nilai</title>
+        <title>Riwayat</title>
+        <link rel="icon" type="image/x-icon" href="../assets/img/SchoolIcon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/style.css" rel="stylesheet">
     </head>
     <body>
-        <div class="w-container m-auto flex">
-            <div class="bg-primary w-16 inline-block">
-                <div class="mt-10">
-                    <div class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
-                        <img src="../assets/img/user.png" alt="" class="m-auto">
-                    </div>
-                    
-                    <a href="/analisis">
-                        <div class="w-full flex h-60px mb-3 cursor-pointer hover:bg-primary-600">
-                            <img src="../assets/img/right arrow.svg" alt="" class="m-auto">
-                        </div>
-                    </a>
-                    
-                    <a href="">
-                        <div class="w-full flex h-60px mb-3 cursor-pointer bg-primary-600 hover:bg-primary-600">
-                            <img src="../assets/img/clock.svg" alt="" class="m-auto">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="border-r w-sideleft inline-block py-10 px-60px">
-                <div class="mb-10">
-                    <h1 class="font-plusjakarta font-semibold text-2xl mb-1 text-netral-500">Riwayat ({{ dataAnalysisAll|length }})</h1>
-                </div>
-
-                {% if dataAnalysisAll %}
-                {% for analysis_data in dataAnalysisAll %}
-                    <a href="/riwayat/{{ analysis_data.id_analysis}}">
-                        <div class="px-5 pt-5 pb-8 border rounded-xl mb-5 {% if request.path == '/riwayat/' + analysis_data.id_analysis|string %}bg-primary-100 border-primary{% endif %}">
-                            <div class="mb-3 font-plusjakarta font-semibold text-base text-netral-500">
-                                {{ analysis_data.analysis_name }}
-                            </div>
-    
-                            <div class="mb-2 flex">
-                                <img src="../assets/img/rightArrowSmall.svg" alt="" class="mr-1">
-                                <div class="font-plusjakarta text-base mr-1 text-netral-400">
-                                    Association Rules
-                                </div>
-                                <div class="font-plusjakarta text-base font-semibold text-primary">
-                                    {{ analysis_data.numberRules }}
+        <div class="w-full mt-10 mb-20">
+            <!-- Container -->
+            <div class="w-container flex m-auto">
+                <!-- Side Left Area -->
+                <div class="w-sideleft mr-20">
+                    <!-- Main Menu Area -->
+                    <div class="mb-6">
+                        <a href="/analisis">
+                            <div class="py-3 px-5 border rounded-lg mb-3">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/badge.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Analisis Nilai Hasil Belajar</div>
                                 </div>
                             </div>
-    
-                            <div class="flex">
-                                <img src="../assets/img/Date.svg" alt="" class="mr-1">
-                                <div class="font-plusjakarta text-base text-netral-400">
-                                    {{ analysis_data.date }}
+                        </a>
+
+                        <a href="/riwayat">
+                            <div class="py-3 px-5 border rounded-lg border-primary bg-primary-100 mb-3">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/history.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Riwayat</div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                {% endfor %}
-                {% else %}
-                    <div class="px-6 pt-6 pb-8 bg-alert-100 rounded-xl border border-alert-300">
-                        <div class="flex mb-1">
-                            <img src="../assets/img/alertMark.svg" alt="" class="mr-1">
-                            <div class="font-plusjakarta font-semibold text-base text-alert-600">
-                                Riwayat tidak ditemukan!
-                            </div>
-                        </div>
-                        <div class="font-plusjakarta text-base mb-3 text-alert-600">
-                            Anda belum pernah melakukan analisis nilai.
-                        </div>
-                        <button class="font-plusjakarta font-semibold text-sm text-white bg-alert px-4 py-3 w-full rounded hover:bg-alert-600">Analisa Nilai</button>
-                    </div>
-                {% endif %}
-            </div>
-            
-            {% if dataAnalysis %}
-            <div class="inline-block w-sideright py-10 px-60px">
-                <div class="mb-10">
-                    <h1 class="font-plusjakarta font-semibold text-2xl mb-1 text-netral-500">{{ dataAnalysis[0].analysis_name }}</h1>
-                    <p class="font-plusjakarta font-regular text-base text-netral-400">Berikut ini hasil analisis nilai berdasarkan association rules.</p>
-                </div>
+                        </a>
 
-                <div id="results-container">
-                    <div class="font-plusjakarta font-semibold text-netral-500 mb-3">
-                        File Data Nilai
-                    </div>
-                    <div class="mb-5">
-                        <a href="../files/{{ dataAnalysis[0].data_file }}" class="inline-block hover:underline">
-                            <div class="font-plusjakarta  text-netral-400 flex mb-3 ">
-                                <img src="../assets/img/document.svg" alt="" class="inline mr-1">
-                                <div class="inline">
-                                    {{ dataAnalysis[0].filename }}
+                        <a href="/kelas">
+                            <div class="py-3 px-5 border rounded-lg bg-white">
+                                <div class="flex items-center">
+                                    <img src="../assets/img/kelas.svg" alt="" class="mr-2">
+                                    <div class="font-plusjakarta text-netral-500 text-base">Kelas</div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="grid grid-cols-3 mb-10">
-                        <div class="">
-                            <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                Ambang Batas Nilai
-                            </div>
-                            <div class="font-plusjakarta font-semibold text-primary text-2xl">
-                                {{ dataAnalysis[0].min_score }}
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                Minimal Support
-                            </div>
-                            <div class="font-plusjakarta font-semibold text-primary text-2xl">
-                                {{ dataAnalysis[0].min_support }}%
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                Minimal Confidence
-                            </div>
-                            <div class="font-plusjakarta font-semibold text-primary text-2xl">
-                                {{ dataAnalysis[0].min_confidence }}%
-                            </div>
-                        </div>
-                    </div>
+                    <!-- End Main Menu Area -->
 
+                    <!-- List Mata Pelajaran Area -->
                     <div>
-                        {% set ruleCount = dataRules|length %}
-                        <h1 class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-5">Association Rules ({{ ruleCount }})</h1>
-                        <!-- <pre>{{ dataRules | tojson }}</pre> -->
-                        {% if dataRules %}
-                        {% for item in dataRules %}
-                        <div class="px-6 py-6 border rounded-xl {% if not loop.last %}mb-5{% endif %}">
-                            <div>
-                                <div class="font-plusjakarta font-semibold text-xl text-netral-500 mb-3">
-                                    {{ item.antecedents }}  → {{ item.consequents }}
-                                </div>
+                        <!-- Heading List Mata Pelajaran -->
+                        <div class="font-plusjakarta text-base font-semibold text-netral-500 mb-3">
+                            Mata Pelajaran (7)
+                        </div>
+                        <!-- End Heading List Mata Pelajaran -->
 
-                                <div class="flex mb-5">
-                                    <div class="flex font-plusjakarta text-base text-netral-400 mr-4">
-                                        <img src="../assets/img/bar graph.svg" alt="" class="inline mr-1">
-                                        <div class="mr-1 inline">
-                                            Support
+                        <!-- List Mata Pelajaran -->
+                        <div>
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pkn">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-1.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Kewarganegaraan
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PKN | length }} keterkaitan
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="font-semibold text-success">{{ item.support }}%</span>
                                     </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
 
-                                    <div class="flex font-plusjakarta text-base text-netral-400">
-                                        <img src="../assets/img/percentage.svg" alt="" class="inline mr-1">
-                                        <div class="mr-1 inline">
-                                            Confidence
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/bin">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-2.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Indonesia
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIN | length }} keterkaitan
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="font-semibold text-success">{{ item.confidence }}%</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
 
-                            <div class="font-plusjakarta text-base text-netral-400 pb-5 border-b mb-5">
-                                Nilai <b>{{ item.consequents }}</b> DIPENGARUHI oleh nilai <b>{{ item.antecedents }}</b> dengan nilai SUPPORT sebesar <b>{{ item.support }}%</b> dan nilai CONFIDENCE sebesar <b>{{ item.confidence }}%</b>.
-                            </div>
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/big">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-3.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Bahasa Inggris
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.BIG | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
 
-                            <div class="grid grid-cols-4">
-                                <div class="">
-                                    <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                        Lift
-                                    </div>
-                                    <div class="font-plusjakarta font-semibold text-netral-500 text-xl">
-                                        {{ item.lift }}
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                        Laverage
-                                    </div>
-                                    <div class="font-plusjakarta font-semibold text-netral-500 text-xl">
-                                        {{ item.leverage }}
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                        Conviction
-                                    </div>
-                                    <div class="font-plusjakarta font-semibold text-netral-500 text-xl">
-                                        {{ item.conviction }}
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ipa">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-4.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Alam
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPA | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="">
-                                    <div class="font-plusjakarta text-netral-400 text-base mb-1">
-                                        Zhang's Metric
-                                    </div>
-                                    <div class="font-plusjakarta font-semibold text-netral-500 text-xl">
-                                        {{ item.z_metric }}
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/ips">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-5.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Ilmu Pengetahuan Sosial
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.IPS | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/mtk">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-6.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Matematika
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.MTK | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+
+                            <!-- Mata Pelajaran -->
+                            <a href="/mapel/pjo">
+                                <div class="border p-4 rounded-lg mb-3">
+                                    <div class="flex items-center">
+                                        <img src="../assets/img/mp-7.svg" alt="" class="mr-3">
+                                        <div>
+                                            <div class="font-plusjakarta font-semibold text-base mb-2 text-netral-500">
+                                                Pendidikan Jasmani dan Olahraga
+                                            </div>
+                                            <div class="flex items-center">
+                                                <img src="../assets/img/right arrow.svg" alt="" class="mr-1">
+                                                <div class="font-plusjakarta text-xs text-netral-400">
+                                                    {{ countMapel.PJO | length }} keterkaitan
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Mata Pelajaran -->
+                        </div>
+                        <!-- End List Mata Pelajaran -->
+                    </div>
+                    <!-- End List Mata Pelajaran Area -->
+                </div>
+                <!-- End Side Left Area -->
+
+                <!-- Side Right Area -->
+                <div class="w-sideright">
+                    <!-- Account Area -->
+                    <div class="flex items-center mb-10 relative">
+                        <div class="flex items-center">
+                            <img src="../assets/img/profile.svg" alt="" class="mr-2">
+                            <div class="font-plusjakarta font-semibold text-base text-netral-500">
+                                {{ username }}
                             </div>
                         </div>
-                        {% endfor %}
+
+                        <img src="../assets/img/Menu.svg" alt="" class="ml-auto cursor-pointer" id="menu-btn">
+
+                        <div class="py-3 px-5 bg-white hover:bg-grey-100 border rounded-lg absolute right-0 top-10 hidden" id="menu-out">
+                            <a href="/logout" class="flex items-center ">
+                                <img src="../assets/img/logout.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta text-base text-danger">
+                                    Keluar
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Account Area -->
+
+                    <!-- Main Riwayat Area -->
+                    <div>
+                        <!-- Heading Main Riwayat -->
+                        <div class="mb-10">
+                            <div class="font-plusjakarta font-semibold text-netral-500 text-2xl mb-1">Riwayat Analisis Nilai Hasil Belajar ({{ dataRiwayat | length }})</div>
+                            <div class="font-plusjakarta text-netral-400 text-base">Berikut ini hasil analisis nilai hasil belajar peserta didik yang telah dilakukan sebelumnya.</div>
+                        </div>
+                        <!-- End Heading Main Riwayat -->
+
+                        {% if dataRiwayat %}
+                        <!-- List Riwayat Area -->
+                        <div class="grid gap-3">
+                            {% for riwayat in dataRiwayat %}
+                            <!-- Riwayat -->
+                            <a href="/riwayat/{{ riwayat.id_riwayat }}">
+                                <div class="bg-grey-100 border border-grey-200 p-4 rounded-lg">
+                                    <div class="flex">
+                                        <div class="flex items-center">
+                                            <img src="../assets/img/student.svg" alt="" class="mr-3">
+                                            <div>
+                                                <div class="font-plusjakarta font-semibold text-base text-netral-500">{{ riwayat.nama_siswa }}</div>
+                                                <div class="font-plusjakarta text-netral-400 text-xs">{{ riwayat.kelas }}</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center ml-auto">
+                                            <img src="../assets/img/date.svg" alt="" class="mr-1">
+                                            <div class="font-plusjakarta text-base text-netral-400">
+                                                {{ riwayat.date }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- End Riwayat -->
+                             {% endfor %}
+                        </div>
+                        <!-- End List Riwayat Area -->
                         {% else %}
-                        <div class="px-6 pt-6 pb-8 bg-danger-100 rounded-2xl border border-danger-300">
+                        <!-- Riwayat Not Found -->
+                        <div class="px-6 pt-6 pb-8 bg-alert-100 rounded-xl border border-alert-300">
                             <div class="flex mb-1">
-                                <img src="../assets/img/mark.svg" alt="" class="mr-1">
-                                <div class="text-danger font-semibold font-plusjakarta text-base">
-                                    Association rules tidak ditemukan
+                                <img src="../assets/img/alertMark.svg" alt="" class="mr-1">
+                                <div class="font-plusjakarta font-semibold text-base text-alert-600">
+                                    Riwayat tidak ditemukan!
                                 </div>
                             </div>
-                            <div class="font-plusjakarta text-base text-danger">
-                                Maaf, kami tidak menemukan pola asosiasi dalam data yang Anda masukkan. Coba untuk memperluas atau memperbaiki dataset Anda dengan lebih banyak data atau variabel yang relevan untuk hasil yang lebih baik.
+                            <div class="font-plusjakarta text-base mb-3 text-alert-600">
+                                Anda belum pernah melakukan analisis nilai hasil belajar.
                             </div>
+                            <a href="/analisis">
+                            <button class="font-plusjakarta font-semibold text-sm text-white bg-alert px-4 py-3 w-full rounded hover:bg-alert-600">Analisis Nilai Hasil Belajar</button></a>
                         </div>
+                        <!-- End Riwayat Not Found -->
                         {% endif %}
-
                     </div>
-
+                    <!-- End Main Riwayat Area -->
                 </div>
-
+                <!-- End Side Right Area -->
             </div>
-            {% else %}
-            <div class="inline-block text-center w-sideright m-auto">
-                <div>
-                    <img src="../assets/img/img-1.png" alt="" class="m-auto mb-10">
-                    <div class="font-plusjakarta font-semibold text-2xl text-netral-500 mb-1">
-                        Optimalkan Prestasi Siswa dengan Association Rules!
-                    </div>
-                    <div class="font-plusjakarta text-netral-400 text-base">
-                        Temukan pola keberhasilan dan tingkatkan kinerja akademis Anda sekarang!
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-
+            <!-- End Container -->
         </div>
+
+        <!-- Footer -->
+        <div class="py-10 text-center font-plusjakarta text-base text-netral-400 border-t">
+            Implementasi Algoritma ECLAT untuk Analisis Hasil Pembelajaran Siswa pada Nilai Rapor Siswa SMP berbasis Web
+        </div>
+        <!-- End Footer -->
     </body>
 </html>
 
 <script>
-    var inputIds = ['numericInput1', 'numericInput2'];
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const menuOut = document.getElementById("menu-out");
 
-    inputIds.forEach(function(id) {
-        document.getElementById(id).addEventListener('input', function(e) {
-            var input = e.target.value;
-            var sanitizedInput = input.replace(/[^0-9]/g, '');
-
-            if (input !== sanitizedInput) {
-                e.target.value = sanitizedInput;
-            }
-        });
+    // Toggle menu visibility when the menu button is clicked
+    menuBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        menuOut.classList.toggle("hidden");
     });
+
+    // Hide menu when clicking outside of it
+    document.addEventListener("click", (event) => {
+        if (!menuOut.contains(event.target) && !menuBtn.contains(event.target)) {
+            menuOut.classList.add("hidden");
+        }
+    });
+});
 </script>
